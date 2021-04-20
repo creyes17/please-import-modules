@@ -21,6 +21,7 @@ Clone this repository and open up the Python REPL using `python` from this root 
 Without closing the REPL session, open up the dynamic.py file using your favorite text editor. Change the default value to something different.
 
 ```python
+# dynamic.py
 class Dynamic(object):
     def __init__(self, value="something different"):
         self.value = value
@@ -60,3 +61,31 @@ By contrast, in `bad.py` we imported the class `Dynamic` directly. This means `b
 This is one of two reasons why I recommend that Python developers always import modules and never import functions/class/objects directly.
 
 (The other reason is that I believe that it is more clear and readable when imported functions are always fully qualified. If I'm reading through some code in a large file, I don't need to scroll all the way back to the top to determine if a function/class/whatever is defined locally or imported from elsewhere.)
+
+## Appendix: dynamic.py
+
+```python
+class Dynamic(object):
+    def __init__(self, value="default"):
+        self.value = value
+```
+
+## Appendix: good.py
+
+```python
+import dynamic
+
+
+def get_dynamic():
+    return dynamic.Dynamic()
+```
+
+## Appendix: bad.py
+
+```python
+from dynamic import Dynamic
+
+
+def get_dynamic():
+    return Dynamic()
+```
