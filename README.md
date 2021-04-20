@@ -38,7 +38,7 @@ Back in the same python REPL session:
 ...     reload = importlib.reload  # In Python3, reload was moved to importlib
 ...
 >>> reload(dynamic)
-<module 'dynamic' from '/Users/creyes/github/creyes17/please-import-modules/dynamic.py'>
+<module 'dynamic' from '.../github/creyes17/please-import-modules/dynamic.py'>
 >>> id(bad.Dynamic)
 140194524186640
 >>> id(dynamic.Dynamic)
