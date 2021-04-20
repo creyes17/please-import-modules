@@ -6,7 +6,6 @@ Clone this repository and open up the Python REPL using `python` from this root 
 
 ```python
 >>> import bad, dynamic, good
->>> import importlib
 >>> id(bad.Dynamic)
 140194524186640
 >>> id(dynamic.Dynamic)
@@ -32,7 +31,13 @@ Save your changes.
 Back in the same python REPL session:
 
 ```python
->>> importlib.reload(dynamic)
+>>> import importlib
+>>> try:
+...     reload = reload or importlib.reload  # In Python2, reload is a built-in
+... except NameError:
+...     reload = importlib.reload  # In Python3, reload was moved to importlib
+...
+>>> reload(dynamic)
 <module 'dynamic' from '/Users/creyes/github/creyes17/please-import-modules/dynamic.py'>
 >>> id(bad.Dynamic)
 140194524186640
